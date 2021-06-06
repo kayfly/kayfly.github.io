@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="unity,Magicvoxel,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="KayFly" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="小记大二就想着用“我的世界”这款游戏来做一个3D体素校园（受到在我的世界制作圆明园的团队作品的影响）。这样找点事情打法时间，日后还可以借此缅怀一下学校的时光。简单尝试过后发现没那么容易（第一个是搭图书馆，可很建筑的多细节都想不起来了，且对我的世界玩法不熟悉，不知何年何月才能做成。那个时候感觉还有大把的时光，便逐渐遗忘了，后来开始用rpgmakermv做2D的，效果不好，自己也不喜欢。 大二就想着">
+<meta name="keywords" content="unity,Magicvoxel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity+Magicvoxel一步一步搭建体素3D校园世界">
+<meta property="og:url" content="http://yoursite.com/2018/12/03/2018-12-3-Qcampus3D/index.html">
+<meta property="og:site_name" content="KayFly">
+<meta property="og:description" content="小记大二就想着用“我的世界”这款游戏来做一个3D体素校园（受到在我的世界制作圆明园的团队作品的影响）。这样找点事情打法时间，日后还可以借此缅怀一下学校的时光。简单尝试过后发现没那么容易（第一个是搭图书馆，可很建筑的多细节都想不起来了，且对我的世界玩法不熟悉，不知何年何月才能做成。那个时候感觉还有大把的时光，便逐渐遗忘了，后来开始用rpgmakermv做2D的，效果不好，自己也不喜欢。 大二就想着">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/Gate1.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/Gate1.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/Graduation.jpg">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/Library.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/University_Centre.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/Restaurant.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/academic1-4.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/Restaurant2.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/Laboratory_Building.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/SuYou_building.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/East_playground.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/Gym.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/Administration_Building.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/Motto.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/college-haike.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/college-jingguan.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/dormitory.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/college-Engineering.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/college-shipin.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/college-shipin2.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/college-shengming.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/Arc_bridge.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/Street_lamp.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/Tennis_court.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/door.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/West_playground.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/Gate.png">
+<meta property="og:image" content="http://blog.kayflyliu.com/images/Qcampus/ShuYuan.png">
+<meta property="og:updated_time" content="2021-06-06T14:12:30.576Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unity+Magicvoxel一步一步搭建体素3D校园世界">
+<meta name="twitter:description" content="小记大二就想着用“我的世界”这款游戏来做一个3D体素校园（受到在我的世界制作圆明园的团队作品的影响）。这样找点事情打法时间，日后还可以借此缅怀一下学校的时光。简单尝试过后发现没那么容易（第一个是搭图书馆，可很建筑的多细节都想不起来了，且对我的世界玩法不熟悉，不知何年何月才能做成。那个时候感觉还有大把的时光，便逐渐遗忘了，后来开始用rpgmakermv做2D的，效果不好，自己也不喜欢。 大二就想着">
+<meta name="twitter:image" content="http://blog.kayflyliu.com/images/Qcampus/Gate1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/03/2018-12-3-Qcampus3D/">
+
+
+
+
+
+  <title>Unity+Magicvoxel一步一步搭建体素3D校园世界 | KayFly</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">KayFly</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-时间轴">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            时间轴
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/03/2018-12-3-Qcampus3D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="KayFly">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KayFly">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Unity+Magicvoxel一步一步搭建体素3D校园世界</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-03T04:06:51+08:00">
+                2018-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/我的世界/" itemprop="url" rel="index">
+                    <span itemprop="name">我的世界</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://blog.kayflyliu.com/images/Qcampus/Gate1.png" alt="Magicvoxel" title="Unity场景"></p>
+<h1 id="小记"><a href="#小记" class="headerlink" title="小记"></a>小记</h1><p>大二就想着用“我的世界”这款游戏来做一个3D体素校园（受到在我的世界制作圆明园的团队作品的影响）。这样找点事情打法时间，日后还可以借此缅怀一下学校的时光。简单尝试过后发现没那么容易（第一个是搭图书馆，可很建筑的多细节都想不起来了，且对我的世界玩法不熟悉，不知何年何月才能做成。那个时候感觉还有大把的时光，便逐渐遗忘了，后来开始用rpgmakermv做2D的，效果不好，自己也不喜欢。</p>
+<p>大二就想着用“我的世界”这款游戏来做一个3D体素校园（受到在我的世界制作圆明园的团队作品的影响）。这样找点事情打法时间，日后还可以借此缅怀一下学校的时光。简单尝试过后发现没那么容易（第一个是搭图书馆，可很建筑的多细节都想不起来了，且对我的世界玩法不熟悉，不知何年何月才能做成。那个时候感觉还有大把的时光，便逐渐遗忘了，后来开始用rpgmakermv做2D的，效果不好，自己也不喜欢。</p>
+<p>现在大四上将近结束，接触了Unity，加上去年寒假前玩过一段时间的Magicvoxel，我想可以开始新的制作旅程了，已经完成几个模型了，接下来希望每天都能打打卡，完成一些东西。</p>
+ <a id="more"></a> 
+<p><strong>吐槽</strong><br>踩到了上传图片的坑，本地预览正常上传后不显示。百度到的解决方法很多，但要么本地预览不方便，要么得上传到图床然后引用（之前用过一次，但图片多了麻烦），要么不便于管理。<br>source文件夹的图片还是会被上传到github的，只要引用kayflyliu.com/images/这样的路径就可以显示了。</p>
+<h2 id="今天是2019-5-14，全部内容已于2019-5-3号完成，迟到的打卡"><a href="#今天是2019-5-14，全部内容已于2019-5-3号完成，迟到的打卡" class="headerlink" title="今天是2019/5/14，全部内容已于2019/5/3号完成，迟到的打卡~"></a>今天是2019/5/14，全部内容已于2019/5/3号完成，迟到的打卡~</h2><h3 id="对比图分别为unity场景截图以及校园360度全景图，视频链接在此："><a href="#对比图分别为unity场景截图以及校园360度全景图，视频链接在此：" class="headerlink" title="对比图分别为unity场景截图以及校园360度全景图，视频链接在此："></a>对比图分别为unity场景截图以及校园360度全景图，视频链接在此：</h3><p><iframe src="//player.bilibili.com/player.html?aid=51342164&cid=89872341&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe><br>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<br><img src="http://blog.kayflyliu.com/images/Qcampus/Gate1.png" alt="Magicvoxel" title="Unity场景"></p>
+<h1 id="Magicvoxel-http-blog-kayflyliu-com-images-Qcampus-Gate2-png"><a href="#Magicvoxel-http-blog-kayflyliu-com-images-Qcampus-Gate2-png" class="headerlink" title="![Magicvoxel](http://blog.kayflyliu.com/images/Qcampus/Gate2.png"></a>![Magicvoxel](<a href="http://blog.kayflyliu.com/images/Qcampus/Gate2.png" target="_blank" rel="noopener">http://blog.kayflyliu.com/images/Qcampus/Gate2.png</a></h1><p>![Magicvoxel](<a href="http://kayflyliu.com/images/Qcampus/Gate2.png" target="_blank" rel="noopener">http://kayflyliu.com/images/Qcampus/Gate2.png</a></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>5e4d67a2c775d1b5ed07a5c29fc7ad75d4e53dce<br>“实景”)<br>毕业了，有太多遗憾了，努力发现生活的美，过好每一天，给未来少一些遗憾！<br><img src="http://blog.kayflyliu.com/images/Qcampus/Graduation.jpg" alt="Magicvoxel" title="毕业照"></p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="12月3日"><a href="#12月3日" class="headerlink" title="12月3日"></a>12月3日</h2><h3 id="图书馆"><a href="#图书馆" class="headerlink" title="图书馆"></a>图书馆</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/Library.png" alt="Magicvoxel" title="图书馆"></p>
+<h3 id="大学生活动中心"><a href="#大学生活动中心" class="headerlink" title="大学生活动中心"></a>大学生活动中心</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/University_Centre.png" alt="Magicvoxel" title="大学生活动中心"></p>
+<h3 id="第一餐厅"><a href="#第一餐厅" class="headerlink" title="第一餐厅"></a>第一餐厅</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/Restaurant.png" alt="Magicvoxel" title="第一餐厅"></p>
+<h3 id="教学楼1-4"><a href="#教学楼1-4" class="headerlink" title="教学楼1-4"></a>教学楼1-4</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/academic1-4.png" alt="Magicvoxel" title="教学楼1-4"></p>
+<h2 id="12月4日（开始记录的）第一天"><a href="#12月4日（开始记录的）第一天" class="headerlink" title="12月4日（开始记录的）第一天"></a>12月4日（开始记录的）第一天</h2><h3 id="第二餐厅"><a href="#第二餐厅" class="headerlink" title="第二餐厅"></a>第二餐厅</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/Restaurant2.png" alt="Magicvoxel" title="第二餐厅"></p>
+<h2 id="12月5日-第二天"><a href="#12月5日-第二天" class="headerlink" title="12月5日 第二天"></a>12月5日 第二天</h2><h3 id="实验楼"><a href="#实验楼" class="headerlink" title="实验楼"></a>实验楼</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/Laboratory_Building.png" alt="Magicvoxel" title="实验楼"></p>
+<h2 id="12月6日-第三天"><a href="#12月6日-第三天" class="headerlink" title="12月6日 第三天"></a>12月6日 第三天</h2><h3 id="苏友楼"><a href="#苏友楼" class="headerlink" title="苏友楼"></a>苏友楼</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/SuYou_building.png" alt="Magicvoxel" title="苏友楼"></p>
+<h2 id="12月7日-第四天"><a href="#12月7日-第四天" class="headerlink" title="12月7日 第四天"></a>12月7日 第四天</h2><h3 id="东操场"><a href="#东操场" class="headerlink" title="东操场"></a>东操场</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/East_playground.png" alt="Magicvoxel" title="东操场"></p>
+<h2 id="12月8日-第五天"><a href="#12月8日-第五天" class="headerlink" title="12月8日 第五天"></a>12月8日 第五天</h2><h3 id="体育馆"><a href="#体育馆" class="headerlink" title="体育馆"></a>体育馆</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/Gym.png" alt="Magicvoxel" title="体育馆"></p>
+<h2 id="12月9日-第六天"><a href="#12月9日-第六天" class="headerlink" title="12月9日 第六天"></a>12月9日 第六天</h2><h3 id="行政楼-amp-外国语学院"><a href="#行政楼-amp-外国语学院" class="headerlink" title="行政楼&amp;外国语学院"></a>行政楼&amp;外国语学院</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/Administration_Building.png" alt="Magicvoxel" title="行政楼&amp;外国语学院"></p>
+<h2 id="12月11日-第八天"><a href="#12月11日-第八天" class="headerlink" title="12月11日 第八天"></a>12月11日 第八天</h2><p>昨天晚上试着搭了一下owncloud私有云，踩了不少坑浪费了不少时间，故缺了一天，今晚要出去聚会，就先做一个简单的吧！</p>
+<p>19:37 周二 阴雨连绵，好冷</p>
+<h3 id="校训墙"><a href="#校训墙" class="headerlink" title="校训墙"></a>校训墙</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/Motto.png" alt="Magicvoxel" title="校训墙"></p>
+<h2 id="1月1日-第二十九天"><a href="#1月1日-第二十九天" class="headerlink" title="1月1日 第二十九天"></a>1月1日 第二十九天</h2><p>这一个月都忙实习，从学校搬出来这些事了，每天浑浑噩噩，希望能尽早调整好状态，颓废太久了，习惯的力量很大，我太糟糕了，多锻炼锻炼。<br>今天是元旦，下午突然接到通知去公司，过去又没啥事可做，就把前几天断断续续在做的海洋科学学院完成了。<br>新的一年，珍惜每一天</p>
+<p>23:37 周二</p>
+<h3 id="海洋科学学院"><a href="#海洋科学学院" class="headerlink" title="海洋科学学院"></a>海洋科学学院</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/college-haike.png" alt="Magicvoxel" title="海洋科学学院"></p>
+<h2 id="1月4日-第三十二天"><a href="#1月4日-第三十二天" class="headerlink" title="1月4日 第三十二天"></a>1月4日 第三十二天</h2><p>上午起晚了，26分到公司打卡。中间还有人挤公交挤得打起来了。<br>早会，站着站着突然感觉恶心，接着眼前就黑了，能听到声音，持续了近10几分钟。早会结束还走到摆着的车子上了，上了楼梯回到办公室呆了一会才缓过来。接下来一天都很差劲，不过话说回来，又有哪一天是做的满意的呢？<br>晚上打了局AOE3，打完9点了，正事还没做，把做完完成的经济管理，爱恩，信息学院楼发上来吧</p>
+<p>23:37 周二</p>
+<h3 id="经济管理，爱恩，信息学院"><a href="#经济管理，爱恩，信息学院" class="headerlink" title="经济管理，爱恩，信息学院"></a>经济管理，爱恩，信息学院</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/college-jingguan.png" alt="Magicvoxel" title="经济管理，爱恩，信息学院"></p>
+<h2 id="1月6日-第三十四天"><a href="#1月6日-第三十四天" class="headerlink" title="1月6日 第三十四天"></a>1月6日 第三十四天</h2><p>听到一首歌，循环中……</p>
+<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="300px" height="86" src="http://music.163.com/outchain/player?type=2&id=25641640&auto=0&height=66"></iframe><br>23:37 周二</p>
+<h3 id="宿舍楼"><a href="#宿舍楼" class="headerlink" title="宿舍楼"></a>宿舍楼</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/dormitory.png" alt="Magicvoxel" title="宿舍楼"></p>
+<h2 id="1月8日-第三十六天"><a href="#1月8日-第三十六天" class="headerlink" title="1月8日 第三十六天"></a>1月8日 第三十六天</h2><p>365读书：一年一年，落日，是无法治愈的乡愁</p>
+<p>22:14 周二</p>
+<h3 id="工程学院"><a href="#工程学院" class="headerlink" title="工程学院"></a>工程学院</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/college-Engineering.png" alt="Magicvoxel" title="工程学院"></p>
+<h2 id="1月15日-第四十三天"><a href="#1月15日-第四十三天" class="headerlink" title="1月15日 第四十三天"></a>1月15日 第四十三天</h2><p>23:40 周二</p>
+<h3 id="食品学院"><a href="#食品学院" class="headerlink" title="食品学院"></a>食品学院</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/college-shipin.png" alt="Magicvoxel" title="食品学院"></p>
+<h2 id="1月17日-第四十五天"><a href="#1月17日-第四十五天" class="headerlink" title="1月17日 第四十五天"></a>1月17日 第四十五天</h2><p>23:00 周四</p>
+<h3 id="食品学院2"><a href="#食品学院2" class="headerlink" title="食品学院2"></a>食品学院2</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/college-shipin2.png" alt="Magicvoxel" title="食品学院2"></p>
+<h2 id="1月25日-第五十三天"><a href="#1月25日-第五十三天" class="headerlink" title="1月25日 第五十三天"></a>1月25日 第五十三天</h2><p>意志的力量是决定成败的力量<br>23:02 周五</p>
+<h3 id="生命学院"><a href="#生命学院" class="headerlink" title="生命学院"></a>生命学院</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/college-shengming.png" alt="Magicvoxel" title="生命学院"></p>
+<h2 id="4月28日-时隔三个月后回归"><a href="#4月28日-时隔三个月后回归" class="headerlink" title="4月28日 时隔三个月后回归~"></a>4月28日 时隔三个月后回归~</h2><p>慢吞吞的把去图书馆常登的拱桥做了下，另外还铺了些路<br>23:38 周日</p>
+<h3 id="拱桥"><a href="#拱桥" class="headerlink" title="拱桥"></a>拱桥</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/Arc_bridge.png" alt="Magicvoxel" title="拱桥"></p>
+<h2 id="4月29日"><a href="#4月29日" class="headerlink" title="4月29日"></a>4月29日</h2><p>发现已经是30号了，不过还是算成29号把~</p>
+<h3 id="路灯-网球场-7道门-西操场"><a href="#路灯-网球场-7道门-西操场" class="headerlink" title="路灯 网球场 7道门 西操场"></a>路灯 网球场 7道门 西操场</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/Street_lamp.png" alt="Magicvoxel" title="路灯"><br><img src="http://blog.kayflyliu.com/images/Qcampus/Tennis_court.png" alt="Magicvoxel" title="网球场"><br><img src="http://blog.kayflyliu.com/images/Qcampus/door.png" alt="Magicvoxel" title="7道门"><br><img src="http://blog.kayflyliu.com/images/Qcampus/West_playground.png" alt="Magicvoxel" title="西操场"></p>
+<h2 id="5月14日"><a href="#5月14日" class="headerlink" title="5月14日"></a>5月14日</h2><p>已经做完了，视频已导出，把剩余的图片传出来<br>16:58 周二</p>
+<h3 id="正门"><a href="#正门" class="headerlink" title="正门"></a>正门</h3><p><img src="http://blog.kayflyliu.com/images/Qcampus/Gate.png" alt="Magicvoxel" title="正门"><br><img src="http://blog.kayflyliu.com/images/Qcampus/ShuYuan.png" alt="Magicvoxel" title="书缘"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/unity/" rel="tag"># unity</a>
+          
+            <a href="/tags/Magicvoxel/" rel="tag"># Magicvoxel</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/03/2021-6-6-观影-伴我同行2/" rel="next" title="Unity+Magicvoxel一步一步搭建体素3D校园世界">
+                <i class="fa fa-chevron-left"></i> Unity+Magicvoxel一步一步搭建体素3D校园世界
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/22/2019-6-30-Graduatio-and-work/" rel="prev" title="【青春】再见大学，再见我的学生时代">
+                【青春】再见大学，再见我的学生时代 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">KayFly</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/kayfly" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:3361136975@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#小记"><span class="nav-number">1.</span> <span class="nav-text">小记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#今天是2019-5-14，全部内容已于2019-5-3号完成，迟到的打卡"><span class="nav-number">1.1.</span> <span class="nav-text">今天是2019/5/14，全部内容已于2019/5/3号完成，迟到的打卡~</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对比图分别为unity场景截图以及校园360度全景图，视频链接在此："><span class="nav-number">1.1.1.</span> <span class="nav-text">对比图分别为unity场景截图以及校园360度全景图，视频链接在此：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Magicvoxel-http-blog-kayflyliu-com-images-Qcampus-Gate2-png"><span class="nav-number">2.</span> <span class="nav-text">![Magicvoxel](http://blog.kayflyliu.com/images/Qcampus/Gate2.png</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#12月3日"><span class="nav-number">2.1.</span> <span class="nav-text">12月3日</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图书馆"><span class="nav-number">2.1.1.</span> <span class="nav-text">图书馆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大学生活动中心"><span class="nav-number">2.1.2.</span> <span class="nav-text">大学生活动中心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一餐厅"><span class="nav-number">2.1.3.</span> <span class="nav-text">第一餐厅</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#教学楼1-4"><span class="nav-number">2.1.4.</span> <span class="nav-text">教学楼1-4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12月4日（开始记录的）第一天"><span class="nav-number">2.2.</span> <span class="nav-text">12月4日（开始记录的）第一天</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第二餐厅"><span class="nav-number">2.2.1.</span> <span class="nav-text">第二餐厅</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12月5日-第二天"><span class="nav-number">2.3.</span> <span class="nav-text">12月5日 第二天</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实验楼"><span class="nav-number">2.3.1.</span> <span class="nav-text">实验楼</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12月6日-第三天"><span class="nav-number">2.4.</span> <span class="nav-text">12月6日 第三天</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#苏友楼"><span class="nav-number">2.4.1.</span> <span class="nav-text">苏友楼</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12月7日-第四天"><span class="nav-number">2.5.</span> <span class="nav-text">12月7日 第四天</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#东操场"><span class="nav-number">2.5.1.</span> <span class="nav-text">东操场</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12月8日-第五天"><span class="nav-number">2.6.</span> <span class="nav-text">12月8日 第五天</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#体育馆"><span class="nav-number">2.6.1.</span> <span class="nav-text">体育馆</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12月9日-第六天"><span class="nav-number">2.7.</span> <span class="nav-text">12月9日 第六天</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#行政楼-amp-外国语学院"><span class="nav-number">2.7.1.</span> <span class="nav-text">行政楼&amp;外国语学院</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12月11日-第八天"><span class="nav-number">2.8.</span> <span class="nav-text">12月11日 第八天</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#校训墙"><span class="nav-number">2.8.1.</span> <span class="nav-text">校训墙</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1月1日-第二十九天"><span class="nav-number">2.9.</span> <span class="nav-text">1月1日 第二十九天</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#海洋科学学院"><span class="nav-number">2.9.1.</span> <span class="nav-text">海洋科学学院</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1月4日-第三十二天"><span class="nav-number">2.10.</span> <span class="nav-text">1月4日 第三十二天</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经济管理，爱恩，信息学院"><span class="nav-number">2.10.1.</span> <span class="nav-text">经济管理，爱恩，信息学院</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1月6日-第三十四天"><span class="nav-number">2.11.</span> <span class="nav-text">1月6日 第三十四天</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#宿舍楼"><span class="nav-number">2.11.1.</span> <span class="nav-text">宿舍楼</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1月8日-第三十六天"><span class="nav-number">2.12.</span> <span class="nav-text">1月8日 第三十六天</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工程学院"><span class="nav-number">2.12.1.</span> <span class="nav-text">工程学院</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1月15日-第四十三天"><span class="nav-number">2.13.</span> <span class="nav-text">1月15日 第四十三天</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#食品学院"><span class="nav-number">2.13.1.</span> <span class="nav-text">食品学院</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1月17日-第四十五天"><span class="nav-number">2.14.</span> <span class="nav-text">1月17日 第四十五天</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#食品学院2"><span class="nav-number">2.14.1.</span> <span class="nav-text">食品学院2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1月25日-第五十三天"><span class="nav-number">2.15.</span> <span class="nav-text">1月25日 第五十三天</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生命学院"><span class="nav-number">2.15.1.</span> <span class="nav-text">生命学院</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4月28日-时隔三个月后回归"><span class="nav-number">2.16.</span> <span class="nav-text">4月28日 时隔三个月后回归~</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拱桥"><span class="nav-number">2.16.1.</span> <span class="nav-text">拱桥</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4月29日"><span class="nav-number">2.17.</span> <span class="nav-text">4月29日</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#路灯-网球场-7道门-西操场"><span class="nav-number">2.17.1.</span> <span class="nav-text">路灯 网球场 7道门 西操场</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5月14日"><span class="nav-number">2.18.</span> <span class="nav-text">5月14日</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正门"><span class="nav-number">2.18.1.</span> <span class="nav-text">正门</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">KayFly</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
